@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+rm -rf $SCRIPT_DIR/base_repo/build
 mkdir $SCRIPT_DIR/base_repo/build;
 cd $SCRIPT_DIR/base_repo/build
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=yes ..
 make all
 make install
 
+rm -rf $SCRIPT_DIR/our_host/build
 mkdir $SCRIPT_DIR/our_host/build;
 cd $SCRIPT_DIR/our_host/build
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=yes ..
 make all
 make install
 
+rm -rf $SCRIPT_DIR/client_host/build
 mkdir $SCRIPT_DIR/client_host/build;
 cd $SCRIPT_DIR/client_host/build
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=yes ..
-make all
 make install
 
 cd $SCRIPT_DIR/enduser_host
